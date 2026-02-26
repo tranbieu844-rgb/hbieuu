@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ocean2Farm – Từ Biển Ra Đồng | Cửa hàng</title>
+  <meta name="description" content="Ocean2Farm – Giải pháp dinh dưỡng nguồn gốc từ biển cho nông nghiệp bền vững. Đặt hàng nhanh, tư vấn kỹ thuật, giao hàng toàn quốc." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2f;
+      --muted:#93a4c7;
+      --text:#eef3ff;
+      --brand:#41c7ff;
+      --brand2:#57e3a0;
+      --danger:#ff5c7a;
+      --warning:#ffd166;
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(65,199,255,.18), transparent 55%),
+                  radial-gradient(1000px 700px at 90% 10%, rgba(87,227,160,.16), transparent 55%),
+                  linear-gradient(180deg, #070b14, #0b1220 35%, #070b14);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:22px}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,11,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .brand{
+      display:flex;align-items:center;gap:12px;min-width:220px;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(65,199,255,.95), rgba(87,227,160,.95));
+      box-shadow: 0 10px 22px rgba(65,199,255,.18);
+      position:relative;
+    }
+    .logo:after{
+      content:""; position:absolute; inset:10px;
+      border-radius:12px; background: rgba(7,11,20,.35);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .brand h1{font-size:16px;margin:0;line-height:1.15}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .nav{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;
+    }
+    .pill{
+      padding:10px 12px;border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.09);
+      font-size:13px;color:var(--text);
+      cursor:pointer;
+      transition: .2s transform, .2s background, .2s border;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .pill:hover{transform:translateY(-1px);background:rgba(255,255,255,.09)}
+    .pill.primary{
+      background: linear-gradient(135deg, rgba(65,199,255,.95), rgba(87,227,160,.95));
+      color:#06101b;
+      border:0;
+      font-weight:700;
+    }
+    .pill.danger{
+      background: rgba(255,92,122,.15);
+      border-color: rgba(255,92,122,.35);
+      color:#ffd6de;
+    }
+    .cart-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-width:20px;height:20px;border-radius:999px;
+      margin-left:8px;
+      background: rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:12px;
+      padding:0 6px;
+    }
+
+    .hero{
+      padding: 26px 0 10px;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:18px;
+      align-items:stretch;
+    }
+    .hero-card{
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding: 22px;
+    }
+    .hero-card:before{
+      content:""; position:absolute; inset:-80px;
+      background: radial-gradient(400px 220px at 20% 30%, rgba(65,199,255,.25), transparent 70%),
+                  radial-gradient(380px 240px at 80% 20%, rgba(87,227,160,.22), transparent 70%);
+      transform: rotate(-6deg);
+      pointer-events:none;
+    }
+    .hero-content{position:relative}
+    .kicker{
+      display:inline-flex; gap:8px;align-items:center;
+      padding:8px 10px;border-radius:999px;
+      background: rgba(65,199,255,.10);
+      border: 1px solid rgba(65,199,255,.25);
+      color: #c9f0ff;
+      font-size:12px;
+    }
+    .title{
+      margin:14px 0 10px;
+      font-size: 34px;
+      line-height:1.1;
+      letter-spacing:-.4px;
+    }
+    .subtitle{margin:0;color:var(--muted);font-size:15px;line-height:1.6;max-width:62ch}
+    .hero-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .ghost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      font-weight:600;
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    .mini{
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .mini h3{margin:0 0 6px;font-size:13px}
+    .mini p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+
+    .section{
+      margin-top: 18px;
+    }
+    .section-head{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .section-head h2{margin:0;font-size:18px}
+    .section-head .tools{display:flex;gap:10px;flex-wrap:wrap}
+    .input{
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      outline:none;
+      min-width: 220px;
+    }
+    .select{min-width:180px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 290px;
+    }
+    .thumb{
+      height: 150px;
+      background:
+        radial-gradient(260px 160px at 30% 20%, rgba(65,199,255,.25), transparent 70%),
+        radial-gradient(260px 160px at 80% 10%, rgba(87,227,160,.20), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position:relative;
+    }
+    .tag{
+      position:absolute;top:12px;left:12px;
+      padding:8px 10px;border-radius:999px;
+      background: rgba(0,0,0,.40);
+      border:1px solid rgba(255,255,255,.14);
+      font-size:12px;color:#eaf5ff;
+    }
+    .card-body{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
+    .card h3{margin:0;font-size:16px}
+    .desc{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .price{font-weight:800;font-size:16px}
+    .strike{color:rgba(255,255,255,.55);text-decoration:line-through;font-weight:600;font-size:12px;margin-left:8px}
+    .qty{
+      display:flex;align-items:center;gap:8px;
+      color: var(--muted); font-size:12px;
+    }
+    .btn{
+      border:0; cursor:pointer;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight:700;
+      transition: .2s transform, .2s opacity;
+    }
+    .btn:hover{transform: translateY(-1px); opacity:.96}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(65,199,255,.95), rgba(87,227,160,.95));
+      color:#06101b;
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--text);
+    }
+    .btn.small{padding:8px 10px;border-radius:12px;font-size:13px}
+
+    /* Cart Drawer */
+    .overlay{
+      position:fixed;inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      z-index:90;
+    }
+    .drawer{
+      position:fixed; top:0; right:0; height:100%; width:min(440px, 92vw);
+      background: rgba(10,16,30,.92);
+      border-left:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      box-shadow: -20px 0 40px rgba(0,0,0,.4);
+      transform: translateX(105%);
+      transition: .22s transform;
+      z-index:100;
+      display:flex;flex-direction:column;
+    }
+    .drawer.open{transform:translateX(0)}
+    .overlay.show{display:block}
+    .drawer-head{
+      padding: 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .drawer-head h3{margin:0;font-size:16px}
+    .drawer-body{padding:16px;overflow:auto;flex:1}
+    .line{
+      display:flex;gap:10px;align-items:flex-start;
+      padding: 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      margin-bottom: 10px;
+    }
+    .dot{
+      width:42px;height:42px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(65,199,255,.7), rgba(87,227,160,.65));
+      border:1px solid rgba(255,255,255,.10);
+      flex:0 0 auto;
+    }
+    .line h4{margin:0;font-size:13px}
+    .line p{margin:4px 0 0;color:var(--muted);font-size:12px}
+    .line-actions{
+      margin-left:auto;
+      display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+      min-width: 120px;
+    }
+    .counter{display:flex;align-items:center;gap:8px}
+    .counter button{
+      width:30px;height:30px;border-radius:10px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      cursor:pointer;
+      font-weight:800;
+    }
+    .counter span{min-width:18px;text-align:center;font-weight:800}
+    .money{font-weight:800}
+    .drawer-foot{
+      padding: 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    .sum{display:flex;justify-content:space-between;gap:10px;margin:6px 0;color:var(--muted);font-size:13px}
+    .sum strong{color:var(--text)}
+    .checkout{
+      margin-top: 10px;
+      display:grid;gap:10px;
+    }
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .textarea{min-height:76px;resize:vertical}
+    .notice{
+      margin-top: 8px;
+      font-size:12px;color:rgba(255,255,255,.65);line-height:1.5
+    }
+
+    footer{
+      margin: 24px 0 16px;
+      color: rgba(255,255,255,.65);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .footgrid{
+      display:grid;grid-template-columns: 1.2fr .8fr;gap:14px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .footgrid h4{margin:0 0 6px;font-size:13px;color:var(--text)}
+    .footgrid p{margin:0;color:rgba(255,255,255,.65)}
+    .muted{color:var(--muted)}
+    .hr{height:1px;background:rgba(255,255,255,.08);margin:14px 0}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns: repeat(2, minmax(0,1fr))}
+      .footgrid{grid-template-columns:1fr}
+    }
+    @media (max-width: 620px){
+      .grid{grid-template-columns:1fr}
+      .brand{min-width:unset}
+      .title{font-size:28px}
+      .input{min-width: unset; width: 100%}
+      .section-head .tools{width:100%}
+      .select{min-width: unset; width: 100%}
+      .grid2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Ocean2Farm</h1>
+          <p>Từ Biển Ra Đồng • Cửa hàng</p>
+        </div>
+      </div>
+
+      <div class="nav">
+        <div class="pill" onclick="scrollToId('products')">Sản phẩm</div>
+        <div class="pill" onclick="scrollToId('about')">Giới thiệu</div>
+        <div class="pill" onclick="scrollToId('support')">Hỗ trợ</div>
+        <div class="pill primary" id="openCartBtn">
+          Giỏ hàng <span class="cart-badge" id="cartCount">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="hero-content">
+            <div class="kicker">🌊🌾 Kinh tế tuần hoàn • Dinh dưỡng nguồn gốc từ biển</div>
+            <h2 class="title">Ocean2Farm – Từ Biển Ra Đồng</h2>
+            <p class="subtitle">
+              Giải pháp dinh dưỡng nguồn gốc từ biển, được chuẩn hóa để hỗ trợ cải thiện môi trường đất,
+              tăng sức sống cây trồng và đồng hành kỹ thuật cùng nhà nông theo hướng bền vững.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn primary" onclick="scrollToId('products')">Xem sản phẩm</button>
+              <button class="btn ghost" onclick="openCart()">Đặt hàng nhanh</button>
+              <button class="btn ghost" onclick="alert('Gợi ý: Thay số hotline/zalo trong code.');">Tư vấn kỹ thuật</button>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <h3>✅ Dễ sử dụng</h3>
+                <p>Pha – tưới/phun theo hướng dẫn. Phù hợp nhiều mô hình canh tác.</p>
+              </div>
+              <div class="mini">
+                <h3>🔎 Chuẩn hóa chất lượng</h3>
+                <p>Kiểm soát lô, truy xuất nội bộ, ổn định trải nghiệm sử dụng.</p>
+              </div>
+              <div class="mini">
+                <h3>🤝 Đồng hành mùa vụ</h3>
+                <p>Tư vấn kỹ thuật, theo dõi và tối ưu hiệu quả theo điều kiện thực tế.</p>
+              </div>
+              <div class="mini">
+                <h3>🌱 Hướng bền vững</h3>
+                <p>Tối ưu nguồn lực tự nhiên và sử dụng có trách nhiệm.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card" id="about">
+          <div class="hero-content">
+            <h2 style="margin:0 0 10px;font-size:18px;">Giới thiệu nhanh</h2>
+            <p class="subtitle" style="margin:0 0 12px;">
+              Ocean2Farm kết nối nguồn lực từ biển với công nghệ và thực tiễn canh tác để tạo ra giải pháp
+              hỗ trợ đất khỏe – cây khỏe – mùa vụ bền.
+            </p>
+            <div class="mini" style="margin-top:10px">
+              <h3>🎁 Ưu đãi hôm nay</h3>
+              <p>Nhập mã <strong>OCEAN10</strong> để giảm 10% (tối đa 50.000đ).</p>
+              <p class="muted" style="margin-top:6px;font-size:12px;">Bạn có thể đổi mã/điều kiện trong phần JS.</p>
+            </div>
+            <div class="mini" style="margin-top:12px">
+              <h3>🚚 Giao hàng</h3>
+              <p>Nội thành: 20.000đ • Tỉnh khác: 35.000đ • Đơn ≥ 500.000đ: miễn ship.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section" id="products">
+      <div class="section-head">
+        <h2>🛒 Sản phẩm</h2>
+        <div class="tools">
+          <input class="input" id="search" placeholder="Tìm sản phẩm… (ví dụ: rong biển, dinh dưỡng)" />
+          <select class="input select" id="sort">
+            <option value="popular">Sắp xếp: Phổ biến</option>
+            <option value="priceAsc">Giá: Thấp → Cao</option>
+            <option value="priceDesc">Giá: Cao → Thấp</option>
+            <option value="nameAsc">Tên: A → Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </section>
+
+    <!-- SUPPORT -->
+    <section class="section" id="support">
+      <div class="section-head">
+        <h2>📌 Hướng dẫn đặt hàng</h2>
+      </div>
+
+      <div class="hero-card" style="box-shadow:none">
+        <div class="hero-content">
+          <p class="subtitle" style="margin:0 0 10px;">
+            1) Chọn sản phẩm → <strong>Thêm vào giỏ</strong><br/>
+            2) Mở <strong>Giỏ hàng</strong> → nhập mã giảm giá (nếu có)<br/>
+            3) Điền thông tin → <strong>Đặt hàng</strong> (hệ thống tạo nội dung đơn để bạn gửi qua Zalo/Email)
+          </p>
+          <div class="mini-grid">
+            <div class="mini">
+              <h3>☎️ Hotline/Zalo</h3>
+              <p>0900 000 000 (thay số của bạn)</p>
+            </div>
+            <div class="mini">
+              <h3>📩 Email</h3>
+              <p>ocean2farm@example.com (thay email của bạn)</p>
+            </div>
+            <div class="mini">
+              <h3>🧪 Lưu ý</h3>
+              <p>Nội dung mang tính giới thiệu. Hướng dẫn sử dụng chi tiết theo từng cây trồng.</p>
+            </div>
+            <div class="mini">
+              <h3>🔒 Bảo mật</h3>
+              <p>Thông tin đặt hàng chỉ dùng để liên hệ xác nhận đơn.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footgrid">
+        <div>
+          <h4>Ocean2Farm – Từ Biển Ra Đồng</h4>
+          <p>Giải pháp dinh dưỡng nguồn gốc từ biển cho nông nghiệp bền vững. Đồng hành kỹ thuật – tối ưu mùa vụ.</p>
+          <div class="hr"></div>
+          <p class="muted">© <span id="year"></span> Ocean2Farm. All rights reserved.</p>
+        </div>
+        <div>
+          <h4>Thông tin cửa hàng</h4>
+          <p>Địa chỉ: (thay địa chỉ)</p>
+          <p>Hotline/Zalo: (thay số)</p>
+          <p>Email: (thay email)</p>
+          <div class="hr"></div>
+          <p class="muted">*Trang demo 1 file. Có thể tích hợp WordPress/WooCommerce sau.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- CART OVERLAY + DRAWER -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>🧺 Giỏ hàng</h3>
+      <button class="btn small ghost" onclick="closeCart()">Đóng</button>
+    </div>
+
+    <div class="drawer-body">
+      <div id="cartLines"></div>
+
+      <div class="mini" style="margin-top:12px">
+        <h3>🎟️ Mã giảm giá</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <input class="input" id="coupon" placeholder="Nhập mã (ví dụ: OCEAN10)" />
+          <button class="btn small primary" onclick="applyCoupon()">Áp dụng</button>
+          <button class="btn small ghost" onclick="clearCoupon()">Xóa mã</button>
+        </div>
+        <p class="notice" id="couponNote">Mã khả dụng: <strong>OCEAN10</strong> (giảm 10% tối đa 50.000đ).</p>
+      </div>
+
+      <div class="mini" style="margin-top:12px">
+        <h3>🚚 Khu vực giao hàng</h3>
+        <div class="grid2" style="margin-top:8px">
+          <select class="input" id="shipZone" onchange="renderCart()">
+            <option value="inner">Nội thành</option>
+            <option value="outer">Tỉnh khác</option>
+          </select>
+          <select class="input" id="payMethod" onchange="renderCart()">
+            <option value="cod">Thanh toán COD</option>
+            <option value="bank">Chuyển khoản</option>
+          </select>
+        </div>
+        <p class="notice">Đơn từ <strong>500.000đ</strong> sẽ <strong>miễn ship</strong>.</p>
+      </div>
+
+      <div class="mini" style="margin-top:12px">
+        <h3>🧾 Thông tin đặt hàng</h3>
+        <div class="checkout">
+          <div class="grid2">
+            <input class="input" id="name" placeholder="Họ và tên" />
+            <input class="input" id="phone" placeholder="Số điện thoại" />
+          </div>
+          <input class="input" id="address" placeholder="Địa chỉ nhận hàng" />
+          <textarea class="input textarea" id="note" placeholder="Ghi chú (loại cây trồng, diện tích, thời điểm sử dụng...)"></textarea>
+          <button class="btn primary" onclick="placeOrder()">Đặt hàng</button>
+          <div class="notice" id="orderResult"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-foot">
+      <div class="sum"><span>Tạm tính</span><strong id="subTotal">0đ</strong></div>
+      <div class="sum"><span>Giảm giá</span><strong id="discount">0đ</strong></div>
+      <div class="sum"><span>Phí ship</span><strong id="shipping">0đ</strong></div>
+      <div class="sum" style="font-size:14px"><span>Tổng</span><strong id="grandTotal">0đ</strong></div>
+      <div class="notice">*Đặt hàng sẽ tạo nội dung đơn để bạn gửi qua Zalo/Email (demo). Muốn thanh toán online tự động cần tích hợp cổng thanh toán.</div>
+    </div>
+  </aside>
+
+  <script>
+    // ====== DATA (Bạn sửa tên/giá/mô tả ở đây) ======
+    const PRODUCTS = [
+      {
+        id: "o2f-01",
+        name: "Ocean2Farm SeaBio – Dinh dưỡng rong biển",
+        tag: "Best seller",
+        desc: "Hỗ trợ sinh trưởng cân đối, tăng sức sống và khả năng chống chịu của cây trồng.",
+        price: 185000,
+        compareAt: 210000,
+        stock: 58,
+        popular: 1
+      },
+      {
+        id: "o2f-02",
+        name: "Ocean2Farm SoilCare – Hỗ trợ cải thiện đất",
+        tag: "Soil",
+        desc: "Hỗ trợ môi trường đất tơi xốp, tăng hoạt động sinh học và khả năng hấp thu dinh dưỡng.",
+        price: 220000,
+        compareAt: 250000,
+        stock: 41,
+        popular: 2
+      },
+      {
+        id: "o2f-03",
+        name: "Ocean2Farm RootBoost – Hỗ trợ rễ khỏe",
+        tag: "Root",
+        desc: "Hỗ trợ phát triển bộ rễ, giúp cây đứng vững và phục hồi tốt khi gặp stress môi trường.",
+        price: 165000,
+        compareAt: 190000,
+        stock: 66,
+        popular: 3
+      },
+      {
+        id: "o2f-04",
+        name: "Ocean2Farm FruitSet – Hỗ trợ nuôi trái",
+        tag: "Fruit",
+        desc: "Hỗ trợ giai đoạn ra hoa – đậu trái – nuôi trái, giúp cây ổn định sinh trưởng.",
+        price: 245000,
+        compareAt: 279000,
+        stock: 33,
+        popular: 4
+      },
+      {
+        id: "o2f-05",
+        name: "Ocean2Farm LeafGreen – Hỗ trợ xanh lá",
+        tag: "Leaf",
+        desc: "Hỗ trợ bộ lá xanh khỏe, cân đối sinh trưởng và tối ưu hấp thu dinh dưỡng.",
+        price: 155000,
+        compareAt: 175000,
+        stock: 72,
+        popular: 5
+      },
+      {
+        id: "o2f-06",
+        name: "Ocean2Farm Combo Mùa Vụ (3 sản phẩm)",
+        tag: "Combo",
+        desc: "Bộ combo tối ưu theo mùa vụ: SoilCare + RootBoost + SeaBio (tiết kiệm hơn mua lẻ).",
+        price: 529000,
+        compareAt: 605000,
+        stock: 18,
+        popular: 0
+      }
+    ];
+
+    // ====== STATE ======
+    const LS_KEY = "o2f_cart_v1";
+    const LS_COUPON = "o2f_coupon_v1";
+
+    let cart = loadCart(); // {productId: qty}
+    let coupon = loadCoupon(); // string or ""
+    let appliedCoupon = null; // object {code, type, value, max}
+
+    // ====== COUPONS (Bạn sửa điều kiện ở đây) ======
+    const COUPONS = [
+      { code: "OCEAN10", type: "percent", value: 10, max: 50000, minSubtotal: 0 },
+      // ví dụ thêm:
+      // { code: "FREESHIP", type: "freeship", value: 0, max: 0, minSubtotal: 300000 }
+    ];
+
+    // ====== HELPERS ======
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => new Intl.NumberFormat("vi-VN").format(n) + "đ";
+
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    function saveCart(){
+      localStorage.setItem(LS_KEY, JSON.stringify(cart));
+      updateCartCount();
+    }
+    function loadCart(){
+      try{
+        return JSON.parse(localStorage.getItem(LS_KEY)) || {};
+      }catch(e){ return {}; }
+    }
+    function saveCoupon(code){
+      localStorage.setItem(LS_COUPON, code || "");
+    }
+    function loadCoupon(){
+      return localStorage.getItem(LS_COUPON) || "";
+    }
+
+    function updateCartCount(){
+      const count = Object.values(cart).reduce((a,b)=>a+b,0);
+      $("cartCount").textContent = count;
+    }
+
+    function findProduct(id){
+      return PRODUCTS.find(p => p.id === id);
+    }
+
+    function computeSubtotal(){
+      let total = 0;
+      for(const [id, qty] of Object.entries(cart)){
+        const p = findProduct(id);
+        if(!p) continue;
+        total += p.price * qty;
+      }
+      return total;
+    }
+
+    function computeShipping(subtotal){
+      const zone = $("shipZone")?.value || "inner";
+      let ship = zone === "inner" ? 20000 : 35000;
+      if(subtotal >= 500000) ship = 0;
+      // coupon freeship
+      if(appliedCoupon && appliedCoupon.type === "freeship") ship = 0;
+      return ship;
+    }
+
+    function computeDiscount(subtotal){
+      if(!appliedCoupon) return 0;
+      if(appliedCoupon.type === "percent"){
+        const raw = Math.round(subtotal * appliedCoupon.value / 100);
+        return Math.min(raw, appliedCoupon.max || raw);
+      }
+      if(appliedCoupon.type === "fixed"){
+        return Math.min(appliedCoupon.value, subtotal);
+      }
+      if(appliedCoupon.type === "freeship"){
+        return 0;
+      }
+      return 0;
+    }
+
+    // ====== RENDER PRODUCTS ======
+    function renderProducts(){
+      const q = $("search").value.trim().toLowerCase();
+      const sort = $("sort").value;
+
+      let list = PRODUCTS.filter(p => {
+        if(!q) return true;
+        return (p.name + " " + p.desc + " " + p.tag).toLowerCase().includes(q);
+      });
+
+      if(sort === "priceAsc") list.sort((a,b)=>a.price-b.price);
+      else if(sort === "priceDesc") list.sort((a,b)=>b.price-a.price);
+      else if(sort === "nameAsc") list.sort((a,b)=>a.name.localeCompare(b.name,'vi'));
+      else list.sort((a,b)=>(a.popular??999)-(b.popular??999));
+
+      const grid = $("productGrid");
+      grid.innerHTML = "";
+
+      list.forEach(p=>{
+        const el = document.createElement("div");
+        el.className = "card";
+        el.innerHTML = `
+          <div class="thumb">
+            <div class="tag">${escapeHtml(p.tag)}</div>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3>${escapeHtml(p.name)}</h3>
+              <p class="desc">${escapeHtml(p.desc)}</p>
+            </div>
+            <div class="row">
+              <div class="price">
+                ${fmt(p.price)}
+                <span class="strike">${fmt(p.compareAt)}</span>
+              </div>
+              <div class="qty">Còn: <strong style="color:var(--text)">${p.stock}</strong></div>
+            </div>
+            <div class="row">
+              <button class="btn ghost small" onclick="quickInfo('${p.id}')">Chi tiết</button>
+              <button class="btn primary small" onclick="addToCart('${p.id}', 1)">Thêm vào giỏ</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    function quickInfo(id){
+      const p = findProduct(id);
+      if(!p) return;
+      alert(
+        `${p.name}\n\n` +
+        `Mô tả: ${p.desc}\n` +
+        `Giá: ${fmt(p.price)}\n\n` +
+        `Gợi ý: Bạn có thể thêm “HDSD/Quy cách/Đối tượng cây trồng” ở dữ liệu PRODUCTS.`
+      );
+    }
+
+    // ====== CART OPS ======
+    function addToCart(id, qty){
+      cart[id] = (cart[id] || 0) + qty;
+      if(cart[id] <= 0) delete cart[id];
+      saveCart();
+      renderCart();
+      toast("✅ Đã thêm vào giỏ hàng!");
+    }
+
+    function setQty(id, qty){
+      if(qty <= 0) delete cart[id];
+      else cart[id] = qty;
+      saveCart();
+      renderCart();
+    }
+
+    function removeItem(id){
+      delete cart[id];
+      saveCart();
+      renderCart();
+    }
+
+    // ====== CART DRAWER ======
+    function openCart(){
+      $("overlay").classList.add("show");
+      $("drawer").classList.add("open");
+      $("drawer").setAttribute("aria-hidden","false");
+      renderCart();
+    }
+    function closeCart(){
+      $("overlay").classList.remove("show");
+      $("drawer").classList.remove("open");
+      $("drawer").setAttribute("aria-hidden","true");
+      $("orderResult").textContent = "";
+    }
+
+    // overlay click closes
+    document.addEventListener("click", (e)=>{
+      if(e.target && e.target.id === "overlay") closeCart();
+    });
+
+    // ====== COUPONS ======
+    function normalizeCode(s){ return (s||"").trim().toUpperCase(); }
+
+    function applyCoupon(){
+      const code = normalizeCode($("coupon").value);
+      const found = COUPONS.find(c => c.code === code);
+      if(!found){
+        appliedCoupon = null;
+        coupon = "";
+        saveCoupon("");
+        $("couponNote").innerHTML = `❌ Mã không hợp lệ. Mã khả dụng: <strong>OCEAN10</strong>.`;
+        renderCart();
+        return;
+      }
+      const subtotal = computeSubtotal();
+      if((found.minSubtotal||0) > subtotal){
+        appliedCoupon = null;
+        coupon = "";
+        saveCoupon("");
+        $("couponNote").innerHTML = `⚠️ Mã <strong>${found.code}</strong> yêu cầu đơn tối thiểu ${fmt(found.minSubtotal)}.`;
+        renderCart();
+        return;
+      }
+      appliedCoupon = found;
+      coupon = found.code;
+      saveCoupon(coupon);
+      $("couponNote").innerHTML = `✅ Đã áp dụng mã <strong>${found.code}</strong>.`;
+      renderCart();
+    }
+
+    function clearCoupon(){
+      appliedCoupon = null;
+      coupon = "";
+      $("coupon").value = "";
+      saveCoupon("");
+      $("couponNote").innerHTML = `Mã khả dụng: <strong>OCEAN10</strong> (giảm 10% tối đa 50.000đ).`;
+      renderCart();
+    }
+
+    function syncCouponFromStorage(){
+      const code = normalizeCode(coupon);
+      if(!code) { appliedCoupon = null; return; }
+      const found = COUPONS.find(c => c.code === code);
+      if(found) appliedCoupon = found;
+      $("coupon").value = code;
+      $("couponNote").innerHTML = found ? `✅ Đã áp dụng mã <strong>${found.code}</strong>.` :
+        `❌ Mã lưu không hợp lệ. Mã khả dụng: <strong>OCEAN10</strong>.`;
+    }
+
+    // ====== RENDER CART ======
+    function renderCart(){
+      const lines = $("cartLines");
+      lines.innerHTML = "";
+
+      const ids = Object.keys(cart);
+      if(ids.length === 0){
+        lines.innerHTML = `
+          <div class="mini">
+            <h3>Giỏ hàng đang trống</h3>
+            <p class="notice">Hãy thêm sản phẩm để đặt hàng nhanh nhé 🙂</p>
+            <button class="btn primary small" onclick="closeCart(); scrollToId('products')">Chọn sản phẩm</button>
+          </div>
+        `;
+      } else {
+        ids.forEach(id=>{
+          const p = findProduct(id);
+          if(!p) return;
+          const qty = cart[id];
+          const line = document.createElement("div");
+          line.className = "line";
+          line.innerHTML = `
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <h4>${escapeHtml(p.name)}</h4>
+              <p>${fmt(p.price)} × ${qty} = <span class="money">${fmt(p.price * qty)}</span></p>
+            </div>
+            <div class="line-actions">
+              <div class="counter">
+                <button onclick="setQty('${id}', ${qty-1})">−</button>
+                <span>${qty}</span>
+                <button onclick="setQty('${id}', ${qty+1})">+</button>
+              </div>
+              <button class="btn small ghost" onclick="removeItem('${id}')">Xóa</button>
+            </div>
+          `;
+          lines.appendChild(line);
+        });
+      }
+
+      const subtotal = computeSubtotal();
+      const discount = computeDiscount(subtotal);
+      const shipping = computeShipping(subtotal);
+      const total = Math.max(0, subtotal - discount) + shipping;
+
+      $("subTotal").textContent = fmt(subtotal);
+      $("discount").textContent = "-" + fmt(discount);
+      $("shipping").textContent = fmt(shipping);
+      $("grandTotal").textContent = fmt(total);
+
+      // if coupon saved but subtotal condition fails, show warning (soft)
+      if(appliedCoupon && (appliedCoupon.minSubtotal||0) > subtotal){
+        $("couponNote").innerHTML = `⚠️ Mã <strong>${appliedCoupon.code}</strong> yêu cầu đơn tối thiểu ${fmt(appliedCoupon.minSubtotal)}.`;
+      }
+
+      updateCartCount();
+    }
+
+    // ====== ORDER ======
+    function placeOrder(){
+      const name = $("name").value.trim();
+      const phone = $("phone").value.trim();
+      const address = $("address").value.trim();
+      const note = $("note").value.trim();
+      const zone = $("shipZone").value;
+      const pay = $("payMethod").value;
+
+      if(Object.keys(cart).length === 0){
+        $("orderResult").innerHTML = `❌ Bạn chưa chọn sản phẩm.`;
+        return;
+      }
+      if(!name || !phone || !address){
+        $("orderResult").innerHTML = `⚠️ Vui lòng nhập <strong>Họ tên</strong>, <strong>SĐT</strong>, <strong>Địa chỉ</strong>.`;
+        return;
+      }
+
+      const subtotal = computeSubtotal();
+      const discount = computeDiscount(subtotal);
+      const shipping = computeShipping(subtotal);
+      const total = Math.max(0, subtotal - discount) + shipping;
+
+      const itemsText = Object.entries(cart).map(([id,qty])=>{
+        const p = findProduct(id);
+        return `- ${p?.name || id} × ${qty} = ${fmt((p?.price||0)*qty)}`;
+      }).join("\n");
+
+      const payText = pay === "cod" ? "COD (nhận hàng trả tiền)" : "Chuyển khoản";
+      const zoneText = zone === "inner" ? "Nội thành" : "Tỉnh khác";
+
+      const msg =
+`[ĐƠN HÀNG OCEAN2FARM]
+Khách: ${name}
+SĐT: ${phone}
+Địa chỉ: ${address}
+Khu vực: ${zoneText}
+Thanh toán: ${payText}
+
+Sản phẩm:
+${itemsText}
+
+Tạm tính: ${fmt(subtotal)}
+Giảm giá: -${fmt(discount)} ${coupon ? `(mã ${coupon})` : ""}
+Phí ship: ${fmt(shipping)}
+TỔNG: ${fmt(total)}
+
+Ghi chú: ${note || "(không)"}
+`;
+
+      // Copy to clipboard for sending via Zalo/Email
+      navigator.clipboard.writeText(msg).then(()=>{
+        $("orderResult").innerHTML =
+          `✅ Đã tạo đơn và <strong>copy nội dung</strong> vào clipboard.<br/>
+           Bạn chỉ cần dán vào Zalo/Facebook/Email để xác nhận đơn.`;
+      }).catch(()=>{
+        $("orderResult").innerHTML =
+          `✅ Đã tạo đơn. (Trình duyệt không cho copy tự động) <br/>
+           Hãy copy thủ công nội dung bên dưới: <pre style="white-space:pre-wrap;background:rgba(0,0,0,.25);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.12)">${escapeHtml(msg)}</pre>`;
+      });
+
+      // Optional: clear cart after placing order (comment out if you don't want)
+      // cart = {}; saveCart(); renderCart();
+    }
+
+    // ====== TOAST (mini) ======
+    let toastTimer = null;
+    function toast(text){
+      let el = document.getElementById("toast");
+      if(!el){
+        el = document.createElement("div");
+        el.id = "toast";
+        el.style.position = "fixed";
+        el.style.left = "50%";
+        el.style.bottom = "18px";
+        el.style.transform = "translateX(-50%)";
+        el.style.padding = "10px 12px";
+        el.style.borderRadius = "14px";
+        el.style.background = "rgba(0,0,0,.55)";
+        el.style.border = "1px solid rgba(255,255,255,.16)";
+        el.style.backdropFilter = "blur(10px)";
+        el.style.boxShadow = "0 16px 40px rgba(0,0,0,.35)";
+        el.style.zIndex = "200";
+        el.style.fontSize = "13px";
+        document.body.appendChild(el);
+      }
+      el.textContent = text;
+      el.style.opacity = "1";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ el.style.opacity = "0"; }, 1400);
+    }
+
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, (m)=>({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    // ====== INIT ======
+    document.getElementById("year").textContent = new Date().getFullYear();
+    updateCartCount();
+    renderProducts();
+
+    // events
+    $("search").addEventListener("input", renderProducts);
+    $("sort").addEventListener("change", renderProducts);
+    $("openCartBtn").addEventListener("click", openCart);
+
+    // load coupon saved
+    syncCouponFromStorage();
+
+    // close on ESC
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") closeCart();
+    });
+  </script>
+</body>
+</html>
